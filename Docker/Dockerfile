@@ -1,11 +1,6 @@
 # Base Image
 FROM nginx:latest
 
-# Maintainer Information
-LABEL maintainer="Ahmed Ezzat <a7med.3zat96@gmail.com>" \
-      project="DevOps Project" \
-      version="1.1"
-
 # Install curl for healthcheck
 RUN apt-get update && apt-get install -y curl
 
@@ -17,10 +12,6 @@ COPY . .
 
 # Expose port 80 inside container
 EXPOSE 80
-
-# Environment variables
-ENV PROJECT_ENV=production \
-    AUTHOR="DevOps Team"
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
