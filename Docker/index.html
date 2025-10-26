@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Project | Home</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #0A0F24;
+            color: #fff;
+        }
+
+        header {
+            background-color: #111831;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #15D1C3;
+        }
+
+        nav {
+            background-color: #1B233F;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #15D1C3;
+            padding: 12px 25px;
+            font-weight: 500;
+            margin: 0 10px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #15D1C3;
+            color: #0A0F24;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 700;
+            color: #00FFC6;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 10px auto;
+            color: #B8C1EC;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #1B233F;
+            border-left: 4px solid #00FFC6;
+            width: 280px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background-color: #212B50;
+            cursor: pointer;
+        }
+
+        .card h3 {
+            color: #00FFC6;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #CED4F2;
+            font-size: 14px;
+        }
+
+        footer {
+            background-color: #111831;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 12px;
+            color: #7D8AB6;
+        }
+    </style>
+</head>
+<body>
+
+    <header>End-to-End DevOps Automation on AWS EKS</header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="tools.html">Tools</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <section class="hero">
+        <h1>DevOps Project Dashboard</h1>
+        <p>Automated CI/CD Pipeline with Terraform, Jenkins, Docker, EKS & CloudWatch — Fully Scalable & Production Ready.</p>
+    </section>
+
+    <div class="cards">
+        <div class="card" onclick="location.href='architecture.html'">
+            <h3>Architecture</h3>
+            <p>Explore AWS Infrastructure: VPC, Subnets, EKS, EC2, IAM Roles & Network Design.</p>
+        </div>
+
+        <div class="card" onclick="location.href='tools.html'">
+            <h3>Tools Stack</h3>
+            <p>DevOps tools including Terraform, Jenkins, Docker, EKS, GitHub, CloudWatch & more.</p>
+        </div>
+
+        <div class="card" onclick="location.href='contact.html'">
+            <h3>Team Members</h3>
+            <p>Meet the awesome engineers behind the automation, CI/CD & cloud excellence.</p>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 DevOps Project by Team – All Rights Reserved
+    </footer>
+
+</body>
+</html>
