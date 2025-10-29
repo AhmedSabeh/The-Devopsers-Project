@@ -1,6 +1,9 @@
 # 🚀 DevOps Final Project — CI/CD Pipeline on AWS with Terraform, Jenkins, Docker, Trivy, EKS, Ansible, and ArgoCD
 
-![Architecture Diagram](./Final%20Project.png)
+## Architecture Diagram
+
+<img width="1471" height="939" alt="Final Project" src="https://github.com/user-attachments/assets/00a7272f-2931-4073-8565-1b1fae83ab80" />
+
 
 ## 📘 Project Overview
 
@@ -19,7 +22,7 @@ It covers infrastructure provisioning, continuous integration, containerization,
 | **AWS SNS + Gmail** | Sends build/deployment notifications. |
 | **Jenkins** | Automates CI/CD workflows for building, testing, and deploying code. |
 | **Ansible** | Used to configure and set up Jenkins Master and Worker nodes. |
-| **Docker** | Builds application containers and pushes them to DockerHub (or ECR). |
+| **Docker** | Builds application containers and pushes them to DockerHub. |
 | **Trivy** | Scans Docker images for vulnerabilities before deployment. |
 | **EKS (Elastic Kubernetes Service)** | Hosts and manages the containerized application using Kubernetes. |
 | **ArgoCD** | Handles continuous deployment by monitoring GitHub for manifest changes. |
@@ -72,100 +75,127 @@ It covers infrastructure provisioning, continuous integration, containerization,
 ---
 
 ## 🗂️ Repository Structure
-
+```
+├── Docker/
+| ├── Dockerfile
+| ├── architecture.html
+| ├── assets/
+│       └── favicon.ico
+| ├── contact.html
+| ├── css/
+│       └── styles.css
+| ├── index.html
+| ├── js/
+│       └── scripts.js
+| └── tools.html
+│
 ├── Terraform/
 │ ├── main.tf
 │ ├── variables.tf
 │ ├── outputs.tf
 │ └── backend.tf
+│ ├── modules/
+│ ├── ec2/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputss.tf
+│ ├── vpc/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+│ ├── cloudwatch/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+│ └── eks/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
 │
 ├── Ansible/
 │ ├── roles/
 │ ├── playbooks/
 │ └── inventory/
 │
-├── Jenkinsfile
+├── Jenkins/
+| └── Jenkinsfile
 │
 ├── kubernetes/
 │ ├── deployment.yaml
 │ ├── service.yaml
-│ └── ingress.yaml
+│ └── namespace.yaml
 │
-├── Dockerfile
-│
-├── scripts/
-│ ├── build.sh
-│ └── deploy.sh
-│
-├── Final Project.png
+├── ArgoCD/
+| └── README.md
 │
 └── README.md
-
+```
 
 ---
 
 ## 🚀 How to Run
 
 ### 1️⃣ Clone the Repository
-```bash
+```
 git clone https://github.com/AhmedSabeh/final-devops-project.git
 cd final-devops-project
-
+```
 2️⃣ Provision Infrastructure with Terraform
+```
 cd Terraform
 terraform init
 terraform apply -auto-approve
-
+```
 3️⃣ Configure Jenkins Servers using Ansible
+```
 cd Ansible
 ansible-playbook -i inventory setup-jenkins.yml
-
+```
 4️⃣ Access Jenkins
 
-Open Jenkins Master in your browser:
+-  Open Jenkins Master in your browser:
 http://<jenkins-master-public-ip>:8080
 
 5️⃣ Build and Deploy
 
-Trigger Jenkins pipeline via GitHub webhook.
+-  Trigger Jenkins pipeline via GitHub webhook.
 
-Watch Jenkins build logs.
+-  Watch Jenkins build logs.
 
-Verify EKS deployment:
-
+-  Verify EKS deployment:
+```
 kubectl get pods -n <namespace>
 kubectl get svc -n <namespace>
-
+```
 6️⃣ Access the Application
 
-Get the Load Balancer DNS name:
-
+-  Get the Load Balancer DNS name:
+```
 kubectl get svc -n <namespace>
-
-
-Visit in your browser:
-http://<load-balancer-dns>
+```
+-  Visit in your browser:
+http://load-balancer-dns
 
 🔐 Security and Compliance
 
-Docker images are scanned with Trivy before deployment.
+-  Docker images are scanned with Trivy before deployment.
 
-Terraform backend is securely stored in S3 with proper IAM roles.
+-  Terraform backend is securely stored in S3 with proper IAM roles.
 
-Jenkins credentials are encrypted and managed securely.
+-  Jenkins credentials are encrypted and managed securely.
 
 📧 Notifications
 
-Amazon SNS integrates with Gmail to send build and deployment notifications.
+-  Amazon SNS integrates with Gmail to send build and deployment notifications.
 
 🏁 Result
 
-A fully automated CI/CD pipeline that:
+-  A fully automated CI/CD pipeline that:
 
-Builds code automatically.
+-  Builds code automatically.
 
-Scans and pushes Docker images.
+-  Scans and pushes Docker images.
 
-Deploys to EKS.
+-  Deploys to EKS.
 
-Monitors and notifies on changes.
+-  Monitors and notifies on changes.
