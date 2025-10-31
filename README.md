@@ -1,8 +1,8 @@
-# 🚀 DevOps Final Project — CI/CD Pipeline on AWS with Terraform, Jenkins, Docker, Trivy, EKS, Ansible, and ArgoCD
+# 🚀 DevOps Final Project — CI/CD Pipeline on AWS with Terraform, GitHub Actions, Docker, Trivy, EKS, and ArgoCD
 
 ## Architecture Diagram
 
-<img width="1462" height="937" alt="Final Project" src="https://github.com/user-attachments/assets/d7b24f3c-8da7-4e5e-8b4a-3b27e7410cf0" />
+<img width="1634" height="1065" alt="Final Project (V2)" src="https://github.com/user-attachments/assets/02aee7d9-46a8-4248-8d4a-08145d9d61e3" />
 
 ## 📘 Project Overview
 
