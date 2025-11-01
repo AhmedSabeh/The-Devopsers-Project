@@ -1,9 +1,6 @@
 # Base Image
 FROM nginx:alpine
 
-# Install curl for healthcheck
-RUN apt-get update && apt-get install -y curl
-
 # Set working directory
 WORKDIR /usr/share/nginx/html
 
