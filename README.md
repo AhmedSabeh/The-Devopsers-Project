@@ -100,10 +100,6 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 │ ├── outputs.tf
 │ └── backend.tf
 │ ├── modules/
-│ ├── ec2/
-│       ├── main.tf
-│       ├── variables.tf
-│       └── outputss.tf
 │ ├── vpc/
 │       ├── main.tf
 │       ├── variables.tf
@@ -119,10 +115,7 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 │
 ├── github-workflows/
 | └── ci-cd-pipeline.yaml
-│
-├── Jenkins/
-| └── Jenkinsfile
-│
+|
 ├── kubernetes/
 │ ├── deployment.yaml
 │ ├── service.yaml
