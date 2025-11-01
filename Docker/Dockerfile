@@ -1,17 +1,13 @@
 # Base Image
-FROM nginx:latest
+FROM nginx:alpine
 
-# Install curl and upgrade system packages to fix CVEs
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y curl && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# Install curl for healthcheck
+RUN apt-get update && apt-get install -y curl
 
 # Set working directory
 WORKDIR /usr/share/nginx/html
 
-# Copy website files
+# Copy all website files
 COPY . .
 
 # Expose port 80 inside container
@@ -23,4 +19,5 @@ HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
 
 # Keep nginx running in foreground
 CMD ["nginx", "-g", "daemon off;"]
+
 
