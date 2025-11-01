@@ -8,13 +8,5 @@ variable "sns_email" {
   type        = string
 }
 
-variable "jenkins_master_id" {
-  type = string
-}
-
-variable "jenkins_worker_id" {
-  type = string
-}
-
 variable "cluster_name" {}
 variable "node_group_name" {}
