@@ -1,7 +1,7 @@
 name: Build and Push Docker Image
 
 on:
-  workflow_dispatch:   # 👈 Only runs when manually triggered
+  workflow_dispatch:   # 👈 run manually from Actions tab
 
 jobs:
   build-and-push:
@@ -41,6 +41,15 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:${{ steps.version.outputs.tag }} -f Docker/Dockerfile Docker/
           docker tag ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:${{ steps.version.outputs.tag }} ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:latest
+
+      # 🧠 Trivy image scan before pushing
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:${{ steps.version.outputs.tag }}
+          format: table
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
 
       - name: Push Docker image
         run: |
