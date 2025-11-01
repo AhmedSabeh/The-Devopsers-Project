@@ -1,0 +1,30 @@
+name: CI - Build and Push Docker Image
+
+on:
+  workflow_dispatch:  # manual trigger
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:latest .
+
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:latest
+
+      - name: Verify image pushed
+        run: |
+          echo "✅ Docker image successfully pushed:"
+          echo "➡️ https://hub.docker.com/r/${{ secrets.DOCKERHUB_USERNAME }}/devopsers"
+
