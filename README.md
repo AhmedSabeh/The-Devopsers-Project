@@ -1,8 +1,8 @@
-# 🚀 DevOps Final Project — CI/CD Pipeline on AWS with Terraform, GitHub Actions, Docker, Trivy, EKS, and ArgoCD
+# DevOps Final Project — CI/CD Pipeline on AWS with Terraform, GitHub Actions, Docker, Trivy, EKS, and ArgoCD
 
 ## Architecture Diagram
 
-<img width="1634" height="1065" alt="Final Project (V2)" src="https://github.com/user-attachments/assets/02aee7d9-46a8-4248-8d4a-08145d9d61e3" />
+<img width="1630" height="1064" alt="Final Project (V2)" src="https://github.com/user-attachments/assets/df498380-823f-4a2f-94dd-1db832ecce2c" />
 
 ## 📘 Project Overview
 
@@ -190,11 +190,7 @@ Visit: http://<load-balancer-dns>
 
 -  Secrets Management: Kubernetes secrets and AWS Parameter Store
 
-📧 Notifications
-
--  Amazon SNS integrates with Gmail to send build and deployment notifications.
-
-🏁 Result
+📊 Monitoring & Notifications
 
 -  CloudWatch Alarms: Monitor EKS cluster metrics and pipeline events
 
@@ -204,4 +200,3 @@ Visit: http://<load-balancer-dns>
 
 -  GitHub Actions Logs: Real-time CI/CD pipeline monitoring
 
--  Monitors and notifies on changes.
