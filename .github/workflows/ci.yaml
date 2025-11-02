@@ -71,6 +71,6 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add Kubernetes/deployment.yaml
-          git commit -m "Update image to $IMAGE_TAG [ci skip]" || echo "No changes"
+          git commit -m "Update image to $IMAGE_TAG" || echo "No changes"
           git push origin main || echo "Push failed, maybe no permission"
 
