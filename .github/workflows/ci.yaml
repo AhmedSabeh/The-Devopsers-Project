@@ -60,7 +60,7 @@ jobs:
     - name: Update Kubernetes manifests
       run: |
         # Replace image in deployment YAML
-        sed -i "s|image: .*|image: $IMAGE_NAME:${{ env.IMAGE_TAG }}|" k8s/deployment.yaml
+        sed -i "s|image: .*|image: $IMAGE_NAME:${{ env.IMAGE_TAG }}|" Kubernetes/deployment.yaml
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
         git add k8s/deployment.yaml
