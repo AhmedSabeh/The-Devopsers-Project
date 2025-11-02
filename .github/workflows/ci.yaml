@@ -1,7 +1,10 @@
 name: Build and Push Docker Image
 
 on:
-  workflow_dispatch:   # 👈 run manually from Actions tab
+  workflow_dispatch: {}   # Manual trigger
+  push:
+    branches:
+      - main            # Optional: also trigger on push to main
 
 jobs:
   build-and-push:
@@ -42,7 +45,6 @@ jobs:
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:${{ steps.version.outputs.tag }} -f Docker/Dockerfile Docker/
           docker tag ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:${{ steps.version.outputs.tag }} ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:latest
 
-      # 🧠 Trivy image scan before pushing
       - name: Scan image with Trivy
         uses: aquasecurity/trivy-action@0.20.0
         with:
@@ -56,13 +58,14 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:${{ steps.version.outputs.tag }}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:latest
 
+      - name: Update Kubernetes manifests
+        run: |
+          IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/devopsers
+          IMAGE_TAG=${{ steps.version.outputs.tag }}
+          sed -i "s|image: .*|image: $IMAGE_NAME:$IMAGE_TAG|" Kubernetes/deployment.yaml
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add k8s/deployment.yaml
+          git commit -m "Update image to $IMAGE_TAG [ci skip]" || echo "No changes"
+          git push origin main || echo "Push failed, maybe no permission"
 
-    - name: Update Kubernetes manifests
-      run: |
-        # Replace image in deployment YAML
-        sed -i "s|image: .*|image: $IMAGE_NAME:${{ env.IMAGE_TAG }}|" Kubernetes/deployment.yaml
-        git config --global user.name "github-actions"
-        git config --global user.email "github-actions@github.com"
-        git add k8s/deployment.yaml
-        git commit -m "Update image to $IMAGE_TAG [ci skip]" || echo "No changes"
-        git push origin main || echo "Push failed, maybe no permission"
