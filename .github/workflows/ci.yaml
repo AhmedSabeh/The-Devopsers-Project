@@ -56,3 +56,13 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:${{ steps.version.outputs.tag }}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/devopsers:latest
 
+
+    - name: Update Kubernetes manifests
+      run: |
+        # Replace image in deployment YAML
+        sed -i "s|image: .*|image: $IMAGE_NAME:${{ env.IMAGE_TAG }}|" k8s/deployment.yaml
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add k8s/deployment.yaml
+        git commit -m "Update image to $IMAGE_TAG [ci skip]" || echo "No changes"
+        git push origin main || echo "Push failed, maybe no permission"
