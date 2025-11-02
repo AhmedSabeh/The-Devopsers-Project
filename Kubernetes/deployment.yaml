@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: devopsers
-          image: ahmedsabeh/devopsers:latest
+          image: ahmedsabeh/devopsers:1.10
           ports:
             - containerPort: 80
