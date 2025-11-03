@@ -137,7 +137,7 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 
 -  IAM Best Practices: Least privilege principles for AWS roles
 
--  Network Security: VPC with public subnets and security groups
+-  Network Security: VPC with public subnets and NACL
 
 -  Secrets Management: Kubernetes secrets and AWS Parameter Store
 
