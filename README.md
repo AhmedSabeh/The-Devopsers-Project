@@ -114,7 +114,7 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 │       └── outputs.tf
 │
 ├── github-workflows/
-| └── ci-cd-pipeline.yaml
+| └── ci.yaml
 |
 ├── kubernetes/
 │ ├── deployment.yaml
@@ -128,55 +128,6 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 ```
 
 ---
-
-## 🚀 How to Run
-
-### 1️⃣ Clone the Repository
-```
-1️⃣ Clone & Setup
-bash
-git clone https://github.com/AhmedSabeh/final-devops-project.git
-cd final-devops-project
-```
-2️⃣ Provision Infrastructure
-```
-cd Terraform
-terraform init
-terraform plan
-terraform apply -auto-approve
-```
-3️⃣ Configure Kubernetes Access
-
-# Update kubeconfig for EKS cluster
-```
-aws eks update-kubeconfig --region <region> --name <cluster-name>
-```
-4️⃣ Install ArgoCD
-```
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-```
-5️⃣ Access & Verify
-bash
-# Get ArgoCD admin password
-```
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-```
-# Access ArgoCD UI (port-forward)
-```
-kubectl port-forward svc/argocd-server -n argocd 8080:443
-```
-# Verify application deployment
-```
-kubectl get pods -n <namespace>
-kubectl get svc -n <namespace>
-```
-6️⃣ Access Application
-# Get Load Balancer URL
-```
-kubectl get svc -n <namespace> -o jsonpath='{.items[*].status.loadBalancer.ingress[0].hostname}'
-```
-Visit: http://<load-balancer-dns>
 
 🔐 Security and Compliance
 
@@ -199,4 +150,3 @@ Visit: http://<load-balancer-dns>
 -  ArgoCD Dashboard: Visualize deployment status and sync state
 
 -  GitHub Actions Logs: Real-time CI/CD pipeline monitoring
-
