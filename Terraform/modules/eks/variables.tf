@@ -1,7 +1,3 @@
-########################################
-# EKS CLUSTER VARIABLES
-########################################
-
 variable "cluster_name" {
   description = "The name of the EKS cluster"
   type        = string
@@ -18,14 +14,11 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
-########################################
-# NODE GROUP VARIABLES
-########################################
 
 variable "instance_types" {
   description = "EC2 instance types for the node group"
   type        = list(string)
-  default     = ["t3.medium"]
+  default     = ["t3.micro"]
 }
 
 variable "desired_size" {

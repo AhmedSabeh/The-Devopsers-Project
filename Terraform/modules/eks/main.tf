@@ -1,36 +1,31 @@
-########################################
-# IAM ROLE FOR EKS CLUSTER
-########################################
-resource "aws_iam_role" "eks_cluster_role" {
-  name = "${var.cluster_name}-cluster-role"
+data "aws_iam_policy_document" "eks_assume_role" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [{
-      Effect = "Allow"
-      Principal = {
-        Service = "eks.amazonaws.com"
-      }
-      Action = "sts:AssumeRole"
-    }]
-  })
+    principals {
+      type        = "Service"
+      identifiers = ["eks.amazonaws.com"]
+    }
+  }
 }
 
-# Attach EKS Cluster policy
+resource "aws_iam_role" "eks_cluster_role" {
+  name               = "${var.cluster_name}-cluster-role"
+  assume_role_policy = data.aws_iam_policy_document.eks_assume_role.json
+}
+
+# Attach required policies for EKS cluster
 resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
   role       = aws_iam_role.eks_cluster_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
 
-# Optionally, attach VPC Resource Controller policy
 resource "aws_iam_role_policy_attachment" "eks_vpc_resource_controller" {
   role       = aws_iam_role.eks_cluster_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
 }
 
-########################################
-# CREATE EKS CLUSTER
-########################################
 resource "aws_eks_cluster" "the-cluster" {
   name     = var.cluster_name
   role_arn = aws_iam_role.eks_cluster_role.arn
@@ -41,25 +36,24 @@ resource "aws_eks_cluster" "the-cluster" {
   }
 }
 
-########################################
-# IAM ROLE FOR NODE GROUP
-########################################
-resource "aws_iam_role" "eks_node_role" {
-  name = "${var.cluster_name}-node-role"
+data "aws_iam_policy_document" "eks_node_assume_role" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [{
-      Effect = "Allow"
-      Principal = {
-        Service = "ec2.amazonaws.com"
-      }
-      Action = "sts:AssumeRole"
-    }]
-  })
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
+  }
 }
 
-# Attach policies for nodes
+resource "aws_iam_role" "eks_node_role" {
+  name               = "${var.cluster_name}-node-role"
+  assume_role_policy = data.aws_iam_policy_document.eks_node_assume_role.json
+}
+
+# Attach required IAM policies for EKS nodes
 resource "aws_iam_role_policy_attachment" "node_AmazonEKSWorkerNodePolicy" {
   role       = aws_iam_role.eks_node_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
@@ -75,9 +69,7 @@ resource "aws_iam_role_policy_attachment" "node_ContainerRegistryReadOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
 
-########################################
-# CREATE NODE GROUP
-########################################
+
 resource "aws_eks_node_group" "main" {
   cluster_name    = aws_eks_cluster.the-cluster.name
   node_group_name = "${var.cluster_name}-ng"
