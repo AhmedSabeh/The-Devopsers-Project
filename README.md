@@ -129,7 +129,7 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 
 ---
 
-🔐 Security and Compliance
+### 🔐 Security and Compliance
 
 -  Image Scanning: All Docker images scanned with Trivy before deployment
 
@@ -141,7 +141,7 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 
 -  Secrets Management: Kubernetes secrets and AWS Parameter Store
 
-📊 Monitoring & Notifications
+### 📊 Monitoring & Notifications
 
 -  CloudWatch Alarms: Monitor EKS cluster metrics and pipeline events
 
