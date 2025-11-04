@@ -1,4 +1,4 @@
-# DevOps Final Project — CI/CD Pipeline on AWS with Terraform, GitHub Actions, Docker, Trivy, EKS, and ArgoCD
+# DevOps Final Project - CI/CD Pipeline on AWS with Terraform, GitHub Actions, Docker, Trivy, EKS, and ArgoCD
 
 ## Architecture Diagram
 
@@ -20,6 +20,7 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 | **AWS SNS + Gmail** | Sends build/deployment notifications. |
 | **GitHub Actions** | Automates CI/CD workflows for building, testing, and deploying code. |
 | **Docker** | Builds application containers and pushes them to DockerHub. |
+| **DockerHub** | Stores and manages the built Docker images, which are later pulled by Kubernetes for deployment. |
 | **Trivy** | Scans Docker images for vulnerabilities before deployment. |
 | **EKS (Elastic Kubernetes Service)** | Hosts and manages the containerized application using Kubernetes. |
 | **ArgoCD** | Handles continuous deployment by monitoring GitHub for manifest changes. |
@@ -36,22 +37,16 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
   - Terraform state file stored in **S3** (remote backend).
   - Monitoring via **CloudWatch** and notifications via **SNS**.
 
-### 2️⃣ Continuous Integration (GitHub Actions)
+### 2️⃣ CI - Continuous Integration (GitHub Actions)
 - Trigger: Code push to GitHub repository
-
 - Workflow:
+  - Build Application - Compile and package
+  - Build Docker Image - Create container image
+  - Scan with Trivy - Security vulnerability check
+  - Push to DockerHub - Store validated image
+  - Update Manifests - Auto-update Kubernetes YAML with new image tag
 
--   Build Application - Compile and package
-
--   Build Docker Image - Create container image
-
--   Scan with Trivy - Security vulnerability check
-
--   Push to DockerHub - Store validated image
-
--   Update Manifests - Auto-update Kubernetes YAML with new image tag
-
-### 3️⃣ CD — Continuous Deployment
+### 3️⃣ CD - Continuous Deployment (Argo CD)
 - ArgoCD updates Kubernetes manifest files with the new image tag.
 - Updated manifests are pushed back to **GitHub**.
 - **ArgoCD** detects changes and automatically syncs to the **EKS cluster**.
@@ -59,9 +54,7 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 
 ### 4️ Monitoring & Notifications
 -  CloudWatch tracks pipeline events and performance
-
 -  SNS sends email notifications to Gmail
-
 -  Real-time alerts for build success/failure and deployments
 
 ---
@@ -71,10 +64,10 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 | Category | Tools |
 |-----------|-------|
 | Infrastructure | Terraform, AWS (VPC, EKS, S3, CloudWatch, SNS) |
-| CI/CD | GitHub Actions |
+| CI (Integration)| GitHub Actions |
 | Containerization | Docker |
 | Security | Trivy |
-| Deployment | Kubernetes (EKS), ArgoCD |
+| CD (Deployment) | Kubernetes (EKS), ArgoCD |
 | Monitoring | AWS CloudWatch |
 
 ---
