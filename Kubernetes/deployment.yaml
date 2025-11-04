@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devopsers
+  name: devopsers-deployment
   namespace: devopsers
   labels:
     app: devopsers
@@ -16,7 +16,8 @@ spec:
         app: devopsers
     spec:
       containers:
-        - name: devopsers
+        - name: devopsers-app
           image: ahmedsabeh/devopsers:1.14
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
