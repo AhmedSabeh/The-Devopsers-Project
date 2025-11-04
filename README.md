@@ -2,7 +2,7 @@
 
 ## Architecture Diagram
 
-<img width="1634" height="1055" alt="Final Project (V2)" src="https://github.com/user-attachments/assets/33334da2-e57a-45b1-90d8-e93afab6aa59" />
+<img width="1634" height="1055" alt="Final Project (V2)" src="https://github.com/user-attachments/assets/0b812b7f-1ef1-4b50-be94-599a603b79ad" />
 
 ## 📘 Project Overview
 
