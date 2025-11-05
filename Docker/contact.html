@@ -1,169 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Project | Contact & Team</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps Project | Contact & Team</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background-color: #0A0F24;
-            color: #fff;
-        }
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #0A0F24;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-        header {
-            background-color: #111831;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: 600;
-            border-bottom: 2px solid #15D1C3;
-        }
+    header {
+      background-color: #111831;
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: 600;
+      border-bottom: 2px solid #15D1C3;
+      text-shadow: 0 0 10px #00FFC6, 0 0 20px #00FFC6;
+      animation: glowHeader 3s ease-in-out infinite alternate;
+    }
 
-        nav {
-            background-color: #1B233F;
-            text-align: center;
-            padding: 12px;
-        }
+    @keyframes glowHeader {
+      from { text-shadow: 0 0 5px #00ffc6; }
+      to { text-shadow: 0 0 25px #00ffc6, 0 0 40px #15D1C3; }
+    }
 
-        nav a {
-            text-decoration: none;
-            color: #15D1C3;
-            padding: 12px 25px;
-            font-weight: 500;
-            margin: 0 10px;
-            border-radius: 6px;
-            transition: 0.3s;
-        }
+    nav {
+      background-color: #1B233F;
+      text-align: center;
+      padding: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-        nav a:hover {
-            background-color: #15D1C3;
-            color: #0A0F24;
-        }
+    nav a {
+      text-decoration: none;
+      color: #15D1C3;
+      padding: 12px 25px;
+      font-weight: 500;
+      margin: 0 10px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
 
-        .section-title {
-            text-align: center;
-            margin-top: 40px;
-            color: #00FFC6;
-            font-size: 34px;
-        }
+    nav a:hover {
+      background-color: #15D1C3;
+      color: #0A0F24;
+      box-shadow: 0 0 15px #15D1C3;
+    }
 
-        table {
-            width: 85%;
-            margin: 40px auto;
-            border-collapse: collapse;
-            background-color: #1B233F;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+    .section-title {
+      text-align: center;
+      margin-top: 50px;
+      color: #00FFC6;
+      font-size: 34px;
+      letter-spacing: 1px;
+      animation: fadeInDown 1.5s ease;
+    }
 
-        th, td {
-            padding: 14px;
-            text-align: center;
-            border-bottom: 1px solid #2A3458;
-        }
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-        th {
-            background-color: #111831;
-            color: #00FFC6;
-            font-size: 18px;
-        }
+    table {
+      width: 85%;
+      margin: 40px auto;
+      border-collapse: collapse;
+      background-color: #1B233F;
+      border-radius: 10px;
+      overflow: hidden;
+      animation: fadeInUp 1.2s ease;
+      box-shadow: 0 0 15px rgba(0,255,198,0.2);
+    }
 
-        tr:hover {
-            background-color: #212B50;
-        }
+    th, td {
+      padding: 16px;
+      text-align: center;
+      border-bottom: 1px solid #2A3458;
+    }
 
-        .contact-box {
-            width: 85%;
-            margin: 30px auto;
-            text-align: center;
-            background: #1B233F;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #00FFC6;
-        }
+    th {
+      background-color: #111831;
+      color: #00FFC6;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
 
-        footer {
-            background-color: #111831;
-            text-align: center;
-            padding: 15px;
-            margin-top: 50px;
-            font-size: 12px;
-            color: #7D8AB6;
-        }
-    </style>
+    tr:hover {
+      background-color: #212B50;
+      transform: scale(1.01);
+      transition: 0.3s;
+    }
+
+    /* ⚡️ أسماء الفريق المطرقعة */
+    td:first-child {
+      color: #00FFC6;
+      font-weight: 600;
+      font-size: 17px;
+      text-shadow: 0 0 10px #00FFC6, 0 0 25px #15D1C3;
+      transition: all 0.4s ease;
+      letter-spacing: 0.3px;
+      animation: pulseName 3s infinite ease-in-out;
+    }
+
+    @keyframes pulseName {
+      0% { text-shadow: 0 0 8px #00FFC6, 0 0 20px #15D1C3; }
+      50% { text-shadow: 0 0 20px #00FFC6, 0 0 40px #15D1C3; }
+      100% { text-shadow: 0 0 8px #00FFC6, 0 0 20px #15D1C3; }
+    }
+
+    td:first-child:hover {
+      color: #0A0F24;
+      background: linear-gradient(90deg, #00FFC6, #15D1C3, #00A7A1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transform: scale(1.12);
+      text-shadow: 0 0 40px #00FFC6;
+    }
+
+    /* 💎 تأثيرات إضافية على الجدول */
+    tr:nth-child(even) td {
+      background-color: #18213D;
+    }
+
+    .contact-box {
+      width: 85%;
+      margin: 40px auto;
+      text-align: center;
+      background: #1B233F;
+      padding: 25px;
+      border-radius: 12px;
+      border-left: 4px solid #00FFC6;
+      box-shadow: 0 0 25px rgba(0,255,198,0.4);
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .contact-box h3 {
+      color: #00FFC6;
+      text-shadow: 0 0 10px #00FFC6;
+      animation: pulseName 4s infinite ease-in-out;
+    }
+
+    footer {
+      background: linear-gradient(90deg, #111831, #0A0F24, #111831);
+      background-size: 300% 300%;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #7D8AB6;
+      animation: gradientMove 6s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
 </head>
 <body>
 
 <header>Contact & Team Members</header>
 
 <nav>
-    <a href="index.html">Home</a>
-    <a href="architecture.html">Architecture</a>
-    <a href="tools.html">Tools</a>
-    <a href="contact.html">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="architecture.html">Architecture</a>
+  <a href="tools.html">Tools</a>
+  <a href="contact.html">Team</a>
 </nav>
 
-<h2 class="section-title">Project Team</h2>
+<h2 class="section-title">Our DevOps Team ⚙️</h2>
 
 <table>
-    <tr>
-        <th>Name</th>
-        <th>Role</th>
-        <th>Responsibilities</th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Role</th>
+    <th>Responsibilities</th>
+  </tr>
 
-    <tr>
-        <td>Ahmed Mohamed Sabeh</td>
-        <td>Team Leader / Terraform Engineer</td>
-        <td>Design & Provision AWS Infrastructure</td>
-    </tr>
+  <tr>
+    <td>Ahmed Mohamed Sabeh</td>
+    <td>Team Leader / Terraform Core Infrastructure Engineer</td>
+    <td>Design & build AWS infrastructure with Terraform (VPC, EKS, S3, CloudWatch, SNS)</td>
+  </tr>
 
-    <tr>
-        <td>Nader Ibrahim</td>
-        <td>Jenkins Engineer</td>
-        <td>Build CI/CD Pipelines</td>
-    </tr>
+  <tr>
+    <td>Nader Ibrahim Hamouda Abelkarem</td>
+    <td>GitHub Actions Engineer</td>
+    <td>Develop CI pipelines, integrate Docker Hub & manage build workflows</td>
+  </tr>
 
-    <tr>
-        <td>Ahmed Ezzat</td>
-        <td>Docker Engineer</td>
-        <td>Containerization & Image Management</td>
-    </tr>
+  <tr>
+    <td>Ahmed Ezzat Hussein Abd Elsalam</td>
+    <td>Docker & Image Management Engineer</td>
+    <td>Create Dockerfiles, handle image build process, and Trivy vulnerability scanning</td>
+  </tr>
 
-    <tr>
-        <td>Mina Ibrahim</td>
-        <td>Kubernetes Engineer</td>
-        <td>EKS Deployment & Scalability</td>
-    </tr>
+  <tr>
+    <td>Mina Ibrahim Mikhaiel Gerges</td>
+    <td>Kubernetes (EKS) Engineer</td>
+    <td>Configure EKS, deploy workloads, and integrate Argo CD for GitOps</td>
+  </tr>
 
-    <tr>
-        <td>Mohamed Salah</td>
-        <td>Monitoring & Documentation</td>
-        <td>CloudWatch Logs & Dashboards</td>
-    </tr>
+  <tr>
+    <td>Michael Sameih Wilson Garas</td>
+    <td>Infrastructure & Automation Engineer</td>
+    <td>Support Terraform modules & optimize AWS resources</td>
+  </tr>
 
-    <tr>
-        <td>Michael Sameih</td>
-        <td>Ansible Engineer</td>
-        <td>Automation & Configuration Management</td>
-    </tr>
-
+  <tr>
+    <td>Mohamed Salah Ismail Mohamed</td>
+    <td>Monitoring & Documentation Engineer</td>
+    <td>Implement CloudWatch & SNS alerts, and maintain documentation</td>
+  </tr>
 </table>
 
 <div class="contact-box">
-    <h3>For inquiries or collaboration</h3>
-    <p>Email: devops.team@example.com</p>
-    <p>GitHub: github.com/DevOps-Project</p>
+  <h3>📧 For Inquiries or Collaboration</h3>
+  <p>Email: <b>devops.team@example.com</b></p>
+  <p>GitHub: <b>github.com/DevOps-Project</b></p>
 </div>
 
 <footer>
-    © 2025 DevOps Project — Team Contact
+  © 2025 DevOps Project — Team Contact
 </footer>
 
 </body>
