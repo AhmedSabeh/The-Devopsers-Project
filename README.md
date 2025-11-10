@@ -2,7 +2,7 @@
 
 ## Architecture Diagram
 
-<img width="1632" height="1053" alt="Final Project (V2)" src="https://github.com/user-attachments/assets/8bd5a21d-d044-4d08-afc4-fdaca365d8bb" />
+<img width="2380" height="1484" alt="Final Project (V2)" src="https://github.com/user-attachments/assets/8ce736bc-3d57-4fca-84c8-f6c91cd3eb8a" />
 
 ## 📘 Project Overview
 
@@ -14,7 +14,7 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 
 | Component | Description |
 |------------|-------------|
-| **Terraform** | Infrastructure as Code (IaC) tool used to provision all AWS resources including VPC, subnets, EC2 instances, EKS cluster, and S3 backend. |
+| **Terraform** | Infrastructure as Code (IaC) tool used to provision all AWS resources including VPC, subnets, EKS cluster, and S3 backend. |
 | **AWS S3** | Stores the Terraform remote backend state file. |
 | **AWS CloudWatch** | Monitors and logs events across the AWS environment. |
 | **AWS SNS + Gmail** | Sends build/deployment notifications. |
