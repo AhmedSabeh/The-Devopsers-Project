@@ -9,7 +9,7 @@ module "vpc" {
 module "eks" {
   source            = "./modules/eks"
   cluster_name      = var.cluster_name
-  cluster_version   = "1.29"
+  cluster_version   = "1.31"
   subnet_ids        = module.vpc.public_subnet_ids
   instance_types    = ["t3.micro"]
   desired_size      = 2
