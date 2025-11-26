@@ -9,12 +9,12 @@ module "vpc" {
 module "eks" {
   source            = "./modules/eks"
   cluster_name      = var.cluster_name
-  cluster_version   = "1.31"
+  cluster_version   = "1.32"
   subnet_ids        = module.vpc.public_subnet_ids
-  instance_types    = ["t3.micro"]
+  instance_types    = ["t3.small"]
   desired_size      = 2
   min_size          = 1
-  max_size          = 2
+  max_size          = 3
 }
 
 module "cloudwatch" {
