@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: devopsers-app
-          image: ahmedsabeh/devopsers:1.16
+          image: ahmedsabeh/devopsers:1.17
           imagePullPolicy: Always
           ports:
             - containerPort: 80
