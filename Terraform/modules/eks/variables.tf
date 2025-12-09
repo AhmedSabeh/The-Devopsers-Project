@@ -18,7 +18,7 @@ variable "subnet_ids" {
 variable "instance_types" {
   description = "EC2 instance types for the node group"
   type        = list(string)
-  default     = ["t3.micro"]
+  default     = ["t3.small"]
 }
 
 variable "desired_size" {
@@ -36,6 +36,6 @@ variable "min_size" {
 variable "max_size" {
   description = "Maximum number of worker nodes"
   type        = number
-  default     = 2
+  default     = 3
 }
 
