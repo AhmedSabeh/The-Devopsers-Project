@@ -136,10 +136,20 @@ This project demonstrates a complete DevOps CI/CD pipeline built on AWS Cloud us
 
 ### 📊 Monitoring & Notifications
 
--  CloudWatch Alarms: Monitor EKS cluster metrics and pipeline events
+-  CloudWatch tracks EKS cluster node performance and pipeline events.
 
--  SNS Topics: Send build/deployment notifications to Gmail
+-  CPU-based Auto Scaling:
 
--  ArgoCD Dashboard: Visualize deployment status and sync state
+   *  Nodes scale out automatically if CPU usage exceeds 80% for 4 minutes.
 
--  GitHub Actions Logs: Real-time CI/CD pipeline monitoring
+   *  Nodes scale in automatically if CPU usage drops below 30% for 4 minutes.
+
+   *  Both actions have a 1-minute cooldown to prevent rapid scaling.
+
+-  SNS sends email notifications to your Gmail for:
+
+   *  High CPU or low CPU alarms
+
+   *  Pipeline events (build success/failure, deployments)
+
+-  Real-time alerts ensure the team is immediately notified about cluster performance changes and pipeline status.
