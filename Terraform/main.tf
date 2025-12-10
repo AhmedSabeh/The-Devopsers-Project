@@ -12,9 +12,9 @@ module "eks" {
   cluster_version   = "1.32"
   subnet_ids        = module.vpc.public_subnet_ids
   instance_types    = ["t3.small"]
-  desired_size      = 3
-  min_size          = 2
-  max_size          = 4
+  desired_size      = 2
+  min_size          = 1
+  max_size          = 3
 }
 
 module "cloudwatch" {
